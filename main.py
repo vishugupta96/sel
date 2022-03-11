@@ -15,20 +15,10 @@ def scrape_top_news():
     chrome_options.add_argument("--no-sandbox")
     browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 
-    wait = WebDriverWait(browser, 10)
-    browser.get('https://news.ycombinator.com/')
-    element_list = wait.until(
-        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".title > a"))
-    )
-    for element in element_list:
-        try:
-            title, url = element.text, element.get_attribute('href')
-            print("Title:", title, "\nURL:", url, end="\n\n")
-        except Exception as e:
-            print(e)
-    time.sleep(2)
-    browser.quit()
-
+    browser.get('https://www.youtube.com/channel/UCfLdIEPs1tYj4ieEdJnyNyw') 
+    time.sleep(2) 
+    followers = browser.find_elements_by_xpath("//yt-formatted-string[starts-with(@id,'subscriber-count')]")
+    # print(followers[0].text)
 
 if __name__ == '__main__':
     scrape_top_news()
