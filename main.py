@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
 
-import os
+
    
 from selenium.webdriver.common.keys import Keys  
 from selenium.webdriver.common.by import By
@@ -139,5 +139,3 @@ def yt_data_mine():
 x = yt_data_mine()
 print(x)
 
-if __name__ == '__main__':
-    scrape_top_news()
