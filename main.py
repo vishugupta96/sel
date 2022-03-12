@@ -12,6 +12,13 @@ from selenium.webdriver.common.by import By
 
 def yt_data_mine():
 
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+
 
     youtube = {'followers':'','description':'','lifetime_views':''}
     #executable_path = os.path.join(settings.MEDIA_ROOT,"chromedriver.exe")
