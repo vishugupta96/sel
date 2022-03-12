@@ -22,8 +22,8 @@ def yt_data_mine():
 
     youtube = {'followers':'','description':'','lifetime_views':''}
     #executable_path = os.path.join(settings.MEDIA_ROOT,"chromedriver.exe")
-    executable_path = 'chromedriver.exe'
-    print('executable_path: ', executable_path)
+    # executable_path = 'chromedriver.exe'
+    # print('executable_path: ', executable_path)
 
     browser = webdriver.Chrome(executable_path)  
     browser.get('https://www.youtube.com/channel/UCfLdIEPs1tYj4ieEdJnyNyw') 
