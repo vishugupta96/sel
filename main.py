@@ -1,5 +1,5 @@
-import json
-import pandas as pd
+
+
 
 from selenium import webdriver     
 #from datamine import settings 
