@@ -1,31 +1,29 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import json
+import pandas as pd
+
+from selenium import webdriver     
+#from datamine import settings 
+
+import time  
 import os
-
-
    
 from selenium.webdriver.common.keys import Keys  
 from selenium.webdriver.common.by import By
 
 
 def yt_data_mine():
+    youtube = {'followers':'','description':'','lifetime_views':''}
+    #executable_path = os.path.join(settings.MEDIA_ROOT,"chromedriver.exe")
+    # executable_path = 'chromedriver.exe'
+    # print('executable_path: ', executable_path)
 
+    # browser = webdriver.Chrome(executable_path)  
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-
-
-    youtube = {'followers':'','description':'','lifetime_views':''}
-    #executable_path = os.path.join(settings.MEDIA_ROOT,"chromedriver.exe")
-    # executable_path = 'chromedriver.exe'
-    # print('executable_path: ', executable_path)
-
-    browser = webdriver.Chrome(executable_path)  
     browser.get('https://www.youtube.com/channel/UCfLdIEPs1tYj4ieEdJnyNyw') 
     time.sleep(2) 
     followers = browser.find_elements_by_xpath("//yt-formatted-string[starts-with(@id,'subscriber-count')]")
@@ -36,6 +34,7 @@ def yt_data_mine():
     time.sleep(2)
     description = browser.find_elements_by_xpath('//*[@id="tabsContent"]/tp-yt-paper-tab[7]/div')
     print(description[0].text)
+    print('thats just the way ai am')
     time.sleep(2)
     description[0].click()
     time.sleep(2)
@@ -126,18 +125,6 @@ def yt_data_mine():
     # COMMENTS DATA
     youtube['comments']  = a
 
-
-    # ff = {'comment_count':youtube['comments_count']}
-    # df_v = pd.DataFrame.from_dict(youtube['videos'])
-    # df_c = pd.DataFrame.from_dict(youtube['comments'])
-    # df_d  = pd.DataFrame.from_dict([ff])
-
-
-    # df_v.to_csv('yt_videos.csv', index=False)
-    # df_c.to_csv('yt_comments.csv', index=False)
-    # df_d.to_csv('yt_comments.csv', index=False)
-
-
     return (youtube)
 
 
@@ -145,4 +132,3 @@ def yt_data_mine():
 
 x = yt_data_mine()
 print(x)
-
