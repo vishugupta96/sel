@@ -1,6 +1,3 @@
-
-
-
 from selenium import webdriver     
 #from datamine import settings 
 
@@ -22,7 +19,7 @@ def yt_data_mine():
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    # chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument('window-size=1920x1080')
     browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     browser.get('https://www.youtube.com/channel/UCfLdIEPs1tYj4ieEdJnyNyw') 
